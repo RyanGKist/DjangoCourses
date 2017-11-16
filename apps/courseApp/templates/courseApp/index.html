@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Courses</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+</head>
+<body>
+
+	<br>
+	{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+	<br>
+
+
+	<form action = '/courseAdd' method="POST">
+		{% csrf_token %}
+  <div class="form-group">
+    <input type="text" class="form-control" name="course" placeholder="Course Name">
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" name="desc" rows="3" placeholder="Course Desc"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Sign in</button>
+</form>
+<br>
+<table class="table table-sm table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Desc</th>
+      <th scope="col">Created at</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  	 {% for info in Course %}
+    <tr>
+      <th scope="row">{{info.id}}</th>
+      <td>{{info.name}}</td>
+      <td>{{info.desc}}</td>
+      <td>{{info.updated_at}}</td>
+      <td><a href="/remove{{info.id}}">Remove</a></td>
+    </tr>
+     {% endfor %}
+  </tbody>
+</table>
+</body>
+</html>

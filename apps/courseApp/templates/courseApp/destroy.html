@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Remove Course</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+<body>
+<div class="jumbotron">
+  <h1 class="display-3">Hello!</h1>
+  <p class="lead">Are you sure you want to remove the following course?</p>
+  <hr class="my-4">
+  <p>Course name : {{Course.name}}</p>
+  <p>Course desc : {{Course.desc}}</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href='/' role="button">No</a>
+    <a class="btn btn-primary btn-lg warn" href="/destroy{{Course.id}}" role="button">Yes</a>
+  </p>
+</div>
+</body>
+</html>
